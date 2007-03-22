@@ -1,0 +1,158 @@
+<!ELEMENT action ( add | delete | import | update ) >
+
+<!ELEMENT add EMPTY >
+
+<!ELEMENT address ( line1?, line2?, city?, state?, zip?, country? ) >
+<!ATTLIST address type (home | work | mailing | unspecified) "unspecified" >
+
+<!ELEMENT alias ( #PCDATA ) >
+<!ATTLIST alias groupid-ref CDATA #REQUIRED >
+
+<!ELEMENT batch ( properties?, detail+ ) >
+
+<!ELEMENT birthday ( #PCDATA ) >
+
+<!ELEMENT child ( #PCDATA ) >
+<!ATTLIST child groupid-ref CDATA #REQUIRED >
+
+<!ELEMENT city ( #PCDATA ) >
+
+<!ELEMENT club ( shortname?, title?, description?, relationships?, enrollment? ) >
+
+<!ELEMENT contact-info ( email?, url?, phone*, address* ) >
+
+<!ELEMENT country ( #PCDATA ) >
+
+<!ELEMENT date ( #PCDATA ) >
+
+<!ELEMENT datetime ( #PCDATA ) >
+
+<!ELEMENT days ( #PCDATA ) >
+
+<!ELEMENT default-role ( #PCDATA ) >
+
+<!ELEMENT delete EMPTY >
+
+<!ELEMENT demographics ( birthday?, disability? ) >
+<!ATTLIST demographics gender (male | female | unknown) "unknown" >
+
+<!ELEMENT department ( shortname?, title?, description?, relationships? ) >
+
+<!ELEMENT description ( #PCDATA ) >
+
+<!ELEMENT detail ( action, payload ) >
+
+<!ELEMENT disability ( #PCDATA ) >
+
+<!ELEMENT division ( shortname?, title?, description?, relationships? ) >
+
+<!ELEMENT email ( #PCDATA ) >
+
+<!ELEMENT end ( date, time? ) >
+
+<!ELEMENT enrollment ( model, default-role ) >
+
+<!ELEMENT first ( #PCDATA ) >
+
+<!ELEMENT foreign-id ( #PCDATA ) >
+
+<!ELEMENT formatted ( #PCDATA ) >
+
+<!ELEMENT group ( source-info?, (offering | club | department | topic | division) ) >
+<!ATTLIST group id CDATA #IMPLIED >
+
+<!ELEMENT group-role ( #PCDATA ) >
+
+<!ELEMENT id ( #PCDATA ) >
+
+<!ELEMENT import EMPTY >
+
+<!ELEMENT last ( #PCDATA ) >
+
+<!ELEMENT line1 ( #PCDATA ) >
+
+<!ELEMENT line2 ( #PCDATA ) >
+
+<!ELEMENT location ( #PCDATA ) >
+
+<!ELEMENT meeting ( location?, days?, recurrence?, start?, end? ) >
+
+<!ELEMENT member ( status, group-role ) >
+<!ATTLIST member groupid-ref CDATA #REQUIRED >
+<!ATTLIST member personid-ref CDATA #REQUIRED >
+
+<!ELEMENT model ( #PCDATA ) >
+
+<!ELEMENT name ( formatted?, last, first, prefix?, suffix? ) >
+
+<!ELEMENT offering ( shortname?, title?, description?, relationships?, enrollment?, meeting*, timeframe?, email?, url? ) >
+
+<!ELEMENT organization ( #PCDATA ) >
+<!ATTLIST organization primary (yes | no) #REQUIRED>
+
+<!ELEMENT parent ( #PCDATA ) >
+<!ATTLIST parent groupid-ref CDATA #REQUIRED >
+
+<!ELEMENT payload ( group | member | person | relationships | subgroup ) >
+
+<!ELEMENT person ( source-info?, name?, demographics?, contact-info?, role? ) >
+<!ATTLIST person id CDATA #REQUIRED >
+<!ATTLIST person username CDATA #REQUIRED >
+
+<!ELEMENT phone ( #PCDATA ) >
+<!ATTLIST phone type (main | home | work | mobile | fax | pager) #REQUIRED >
+
+<!ELEMENT prefix ( #PCDATA ) >
+
+<!ELEMENT properties ( source?, target?, datetime? ) >
+
+<!ELEMENT recurrence ( #PCDATA ) >
+
+<!ELEMENT relationships ( child | parent | sibling | alias )+ >
+<!ATTLIST relationships groupid-ref CDATA #IMPLIED >
+<!ATTLIST relationships id CDATA #IMPLIED >
+
+<!ELEMENT role ( system?, organization* ) >
+
+<!ELEMENT shortname ( #PCDATA ) >
+
+<!ELEMENT sibling ( #PCDATA ) >
+<!ATTLIST sibling groupid-ref CDATA #REQUIRED >
+
+<!ELEMENT source ( #PCDATA ) >
+
+<!ELEMENT source-info ( source, id, foreign-id? ) >
+
+<!ELEMENT start ( date, time? ) >
+
+<!ELEMENT state ( #PCDATA ) >
+
+<!ELEMENT status ( #PCDATA ) >
+
+<!ELEMENT subgroup ( status?, group-role? ) >
+<!ATTLIST subgroup groupid-ref CDATA #REQUIRED >
+<!ATTLIST subgroup subgroupid-ref CDATA #REQUIRED >
+
+<!ELEMENT suffix ( #PCDATA ) >
+
+<!ELEMENT system ( #PCDATA ) >
+
+<!ELEMENT target ( #PCDATA ) >
+
+<!ELEMENT term ( #PCDATA ) >
+<!ATTLIST term groupid-ref CDATA #IMPLIED >
+
+<!ELEMENT time ( #PCDATA ) >
+
+<!ELEMENT timeframe ( term, start, end ) >
+
+<!ELEMENT title ( #PCDATA ) >
+
+<!ELEMENT topic ( shortname?, title?, description?, relationships? ) >
+
+<!ELEMENT update EMPTY >
+
+<!ELEMENT url ( #PCDATA ) >
+
+<!ELEMENT zip ( #PCDATA ) >
+

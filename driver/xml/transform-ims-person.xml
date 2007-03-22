@@ -1,0 +1,90 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!-- <!DOCTYPE enterprise SYSTEM "http://localhost:8080/ipac/dtd/ims_epv1p1.dtd"> -->
+
+<!--Author:  Colin Smythe                                                            -->
+
+<!--Date:  31st July, 2002                                                        -->
+
+<!--Example:  Multiple <person> example for the IMS Enterprise Specification Advanced Technolgies Workshop    -->
+<enterprise>
+    <properties>
+        <datasource>Dunelm Services Limited</datasource>
+        <target>Telecommunications LMS</target>
+        <type>DATABASE UPDATE</type>
+        <datetime>2001-08-08</datetime>
+    </properties>
+    <person recstatus = "1">
+        <comments>Add a new Person record.</comments>
+        <sourcedid>
+            <source>Dunelm Services Limited</source>
+            <id>CK1</id>
+        </sourcedid>
+        <name>
+            <fn>Clark Kent</fn>
+            <sort>Kent, C</sort>
+            <nickname>Superman</nickname>
+        </name>
+        <demographics>
+            <gender>2</gender>
+        </demographics>
+        <adr>
+            <extadd>The Daily Planet</extadd>
+            <locality>Metropolis</locality>
+            <country>USA</country>
+        </adr>
+    </person>
+    <person recstatus = "2">
+        <comments>Update a previously created record.</comments>
+        <sourcedid>
+            <source>Dunelm Services Limited</source>
+            <id>CS1</id>
+        </sourcedid>
+        <name>
+            <fn>Colin Smythe</fn>
+            <sort>Smythe, C</sort>
+            <nickname>Colin</nickname>
+            <n>
+                <family>Smythe</family>
+                <given>Colin</given>
+                <other>Manfred</other>
+                <other>Wingarde</other>
+                <prefix>Dr.</prefix>
+                <suffix>C.Eng</suffix>
+                <partname partnametype = "Initials">C.M.W.</partname>
+            </n>
+        </name>
+        <demographics>
+            <gender>2</gender>
+            <bday>1958-02-18</bday>
+            <disability>None.</disability>
+        </demographics>
+        <email>colin@dunelm.com</email>
+        <url>http://www.dunelm.com</url>
+        <tel teltype = "Mobile">4477932335019</tel>
+        <adr>
+            <extadd>Dunelm Services Limited</extadd>
+            <street>34 Acorn Drive</street>
+            <street>Stannington</street>
+            <locality> Sheffield</locality>
+            <region>S.Yorks</region>
+            <pcode>S7 6WA</pcode>
+            <country>UK</country>
+        </adr>
+        <photo imgtype = "gif">
+            <extref>http://www.dunelm.com/staff/colin2.gif</extref>
+        </photo>
+        <institutionrole primaryrole = "No" institutionroletype = "Alumni"/>
+        <datasource>dunelm:colinsmythe:1</datasource>
+    </person>
+    <person recstatus = "3">
+        <comments>Delete this record.</comments>
+        <sourcedid>
+            <source>Dunelm Services Limited</source>
+            <id>LL1</id>
+        </sourcedid>
+        <name>
+            <fn>Lois Lane</fn>
+            <sort>Lane, L</sort>
+        </name>
+    </person>
+</enterprise>

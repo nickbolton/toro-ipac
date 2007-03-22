@@ -1,0 +1,40 @@
+# Build temporary location
+build.home=./classes
+
+# Build temporary driver class location
+DRIVER=./driver_clases
+
+# Location of public properties files for sdk services
+PROPERTIES=./properties
+
+# Tomcat webapp location 
+WEBAPPS=/Users/deuce/dev/src/unicon/academus/aos/tomcat/webapps
+
+# Java library location
+LIBRARIES=./lib
+
+# Java source location
+SRC=./source
+
+# Javadoc destination
+JAVADOC=./javadocs
+
+# Web application name
+PROJNAME=ipac
+
+# Location of public access files like HTML
+HTML=./webpages
+
+# Location where sdk services will read and write files to
+REPOSITORY_HOME=/Users/deuce/dev/src/unicon/academus/aos/data/ipac
+
+# Default canonical input type used in sdk transformation service 
+# and ipac validation. This can be a fully qualified system path or an URL
+#CANONICAL_INPUT=file:///usr/local/jakarta-tomcat-4.1.24/webapps/ipac/dtd/ims_epv1p1.dtd
+CANONICAL_INPUT=http://localhost:8080/ipac/dtd/ims_epv1p1.dtd
+
+# Default canonical output type used in sdk transformation service
+CANONICAL_OUTPUT=unicon
+
+# Location of canonical xsl used in sdk transformation service
+CANONICAL_XSL_HOME=/Users/deuce/dev/src/unicon/academus/aos/tomcat/webapps/ipac/stylesheets/net/unicon/sdk/transformation
