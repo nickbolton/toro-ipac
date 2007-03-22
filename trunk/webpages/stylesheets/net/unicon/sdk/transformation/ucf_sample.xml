@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE batch SYSTEM "unicon7.dtd">
+<batch>
+<!-- Might be worthwhile to add institution and system role elements to facilitate the importing of these in the future -->
+<!-- Might want to add <taskgroup/> to be a subgroup within an Offering (i.e. study or project group) -->
+   <properties>
+       <source><!-- properties/datasource --></source>
+
+      <target><!-- properties/target --></target>
+
+      <datetime><!-- properties/datetime --></datetime>
+   </properties>
+
+   <detail>
+   	  <action>
+   	      <add /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <person id="{sourcedid}" username="{sourcedid/id}">
+	         <source-info>
+	         	<source><!-- sourcedid/source --></source>
+                <id><!-- sourcedid/id --></id>
+                <foreign-id><!-- userid --></foreign-id>
+	         </source-info>
+	         
+	         <name>
+	            <first><!-- name/n/given --></first>
+	            <last><!-- name/n/family --></last>
+	            <formatted><!-- name/fn --></formatted>
+	            <prefix><!-- name/n/prefix --></prefix>
+	            <suffix><!-- name/n/suffix --></suffix>
+	         </name>
+	         
+	         <!-- should we gather demographic information for possible future use, or ignore? -->
+	         <!--<OPTIONAL> -->
+		         <demographics gender="{demographics/gender}">
+		         	<birthday><!-- demographics/bday --></birthday>
+		         	<disability><!-- demographics/disability --></disability>
+		         </demographics>
+	         <!--</OPTIONAL> -->
+	
+	         <contact-info>
+	            <email><!-- email --></email>
+	            <url><!-- url --></url>
+	            <!-- should we gather extra contact information for possible future use, or ignore? -->
+	            <!--<OPTIONAL> -->
+		            <phone type="{tel/@teltype perhaps converted into String}"><!-- tel --></phone>
+		            <address type="unspecified">
+		            	<line1><!-- adr/street + adr/pobox --></line1>
+		            	<line2><!-- adr/extadd --></line2>
+		            	<city><!-- adr/locality --></city>
+		            	<state><!-- adr/region --></state>
+		            	<zip><!-- adr/pcode --></zip>
+		            	<country><!-- adr/country --></country>
+		            </address>
+	            <!--</OPTIONAL> -->
+	         </contact-info>
+	
+	         <role>
+	         	<system><!-- systemrole/@systemroletype, converted to Academus applicable role --></system>
+	         	<organization primary="{institutionrole/@primaryrole}"><!-- institutionrole/@institutionroletype --></organization>
+	         	<organization primary="{institutionrole/@primaryrole}"><!-- institutionrole/@institutionroletype --></organization>
+	         </role>
+	      </person>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <update /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <!-- grouptype/typevalue = 'CLASSES' determines that it is a <offering/> -->
+	      
+	      <group id="{sourcedid}">
+	          <source-info>
+	         	 <source><!-- sourcedid/source --></source>
+	         	 <id><!-- sourcedid/id --></id>
+	          </source-info>
+	         
+		      <offering>
+		         <shortname><!-- description/short --></shortname>
+		         <!--<OPTIONAL> -->
+			         <title><!-- description/long --></title>
+		         <!--</OPTIONAL> -->
+		         <description><!-- description/full --></description>
+		
+				 <!--<OPTIONAL> -->
+					 <relationships>
+					 	<!-- element type from relationship/@relation -->
+					 	<child groupid-ref="{??}" ><!-- relationship/label --></child>
+					 	<parent groupid-ref="{??}" ><!-- relationship/label --></parent>
+					 	<sibling groupid-ref="{??}" ><!-- relationship/label --></sibling>
+					 	<alias groupid-ref="{??}" ><!-- relationship/label --></alias>
+					 </relationships>
+				 <!--</OPTIONAL> -->
+		         
+		         <enrollment>
+		            <model></model>
+		            <default-role></default-role>
+		         </enrollment>
+		         
+		         <!--<OPTIONAL> -->
+		         <!-- Additional elements: Offering ID, Term, Meeting Days, Location, Start/End Time -->
+		         	 <meeting><!-- could have one or more meeting elements -->
+		         	    <location></location>
+		         	    <days></days><!-- "M", "M,W,F", "T,Th", "1,13" -->
+		         	    <recurrence></recurrence><!-- weekly, biweekly, monthly, 1st - 5th occurence in the month, bimonthly, quarterly, semi-annually, annually  -->
+						<start>
+							<date></date>
+							<time></time>
+						</start>
+						
+						<end>
+							<date></date>
+							<time></time>
+						</end>
+		         	 </meeting>
+			         <timeframe>
+			         	<term groupid-ref="{relationship/sourcedid}"><!-- timeframe/adminperiod,  --></term>
+						<start>
+							<date><!-- timeframe/begin --></date>
+						</start>
+						
+						<end>
+							<date><!-- timeframe/end --></date>
+						</end>
+					</timeframe>
+		         <!--</OPTIONAL> -->
+
+		         <!--<OPTIONAL> -->
+					<email><!-- email --></email>
+					<url><!-- url --></url>
+		         <!--</OPTIONAL> -->
+
+		      </offering>
+	      </group>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <add /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <group id="{sourcedid}">
+	          <source-info>
+	         	 <source><!-- sourcedid/source --></source>
+	         	 <id><!-- sourcedid/id --></id>
+	          </source-info>
+
+		      <!-- grouptype/typevalue = 'CLUBS' determines that it is a <club/> -->
+		      <club>
+		         <shortname><!-- description/short --></shortname>
+		         <!--<OPTIONAL> -->
+			         <title><!-- description/long --></title>
+		         <!--</OPTIONAL> -->
+		         <description><!-- description/full --></description>
+		
+				 <!--<OPTIONAL> -->
+					 <relationships id="{sourcedid}">
+					 	<child groupid-ref="{??}" />
+					 	<parent groupid-ref="{??}" ><!-- org/orgunit --></parent>
+					 	<sibling groupid-ref="{??}" />
+					 	<alias groupid-ref="{??}" />
+					 </relationships>
+				 <!--</OPTIONAL> -->
+		         
+		         <enrollment>
+                    <model></model>
+		
+		            <default-role></default-role>
+		         </enrollment>
+		      </club>
+	      </group>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <update /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <group id="{sourcedid}">
+	          <source-info>
+	         	 <source><!-- sourcedid/source --></source>
+	         	 <id><!-- sourcedid/id --></id>
+	          </source-info>
+
+		      <!-- grouptype/typevalue = 'DEPARTMENTS' determines that it is a <department/> -->
+		      <department>
+		         <shortname><!-- description/short --></shortname>
+		         <!--<OPTIONAL> -->
+			         <title><!-- description/long --></title>
+		         <!--</OPTIONAL> -->
+		         <description><!-- description/full --></description>
+		
+				 <!--<OPTIONAL> -->
+					 <relationships id="{sourcedid}">
+					 	<child groupid-ref="{??}" />
+					 	<parent groupid-ref="{??}" ><!-- org/orgunit --></parent>
+					 	<sibling groupid-ref="{??}" />
+					 	<alias groupid-ref="{??}" />
+					 </relationships>
+				 <!--</OPTIONAL> -->
+		      </department>
+	      </group>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <update /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <group id="{sourcedid}">
+	          <source-info>
+	         	 <source><!-- sourcedid/source --></source>
+	         	 <id><!-- sourcedid/id --></id>
+	          </source-info>
+
+		      <!-- grouptype/typevalue = 'COURSES' determines that it is a <topic/> -->
+		      <topic>
+		         <shortname><!-- description/short --></shortname>
+		         <!--<OPTIONAL> -->
+			         <title><!-- description/long --></title>
+		         <!--</OPTIONAL> -->
+		         <description><!-- description/full --></description>
+		
+				 <!--<OPTIONAL> -->
+					 <relationships id="{sourcedid}">
+					 	<child groupid-ref="{??}" />
+					 	<parent groupid-ref="{??}" ><!-- org/orgunit --></parent>
+					 	<sibling groupid-ref="{??}" />
+					 	<alias groupid-ref="{??}" />
+					 </relationships>
+				 <!--</OPTIONAL> -->
+		      </topic>
+	      </group>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <delete /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	      <group id="{sourcedid}">
+	          <source-info>
+	         	 <source><!-- sourcedid/source --></source>
+	         	 <id><!-- sourcedid/id --></id>
+	          </source-info>
+
+		      <!-- grouptype/typevalue = 'DIVISIONS' determines that it is a <division/> -->
+		      <division>
+		         <shortname><!-- description/short --></shortname>
+		         <!--<OPTIONAL> -->
+			         <title><!-- description/long --></title>
+		         <!--</OPTIONAL> -->
+		         <description><!-- description/full --></description>
+		
+				 <!--<OPTIONAL> -->
+					 <relationships id="{sourcedid}">
+					 	<child groupid-ref="{??}" />
+					 	<parent groupid-ref="{??}" ><!-- org/orgunit --></parent>
+					 	<sibling groupid-ref="{??}" />
+					 	<alias groupid-ref="{??}" />
+					 </relationships>
+				 <!--</OPTIONAL> -->
+		      </division>
+	      </group>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <delete /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+		  <!-- member is a person w/in a group container.  It represents data specific to a user within a specific group -->
+		  <member groupid-ref="{sourcedid}" personid-ref="{member/sourcedid}">
+		      <status><!-- member/role/status  --></status>
+		      <group-role><!-- member/role/@roletype --></group-role>
+		  </member>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <delete /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+		  <!-- subgroup is a group w/in a group container.  It represents data specific to a group within another group -->
+		  <subgroup groupid-ref="{sourcedid}" subgroupid-ref="{member/sourcedid}">
+		      <status><!-- member/role/status  --></status>
+		      <group-role><!-- member/role/@roletype --></group-role>
+		  </subgroup>
+      </payload>
+   </detail>
+
+   <detail>
+   	  <action>
+   	      <import /><!-- <add/>, <update/>, <delete/>, or <import/>  -->
+   	  </action>
+      <payload>
+	   	  <!-- alternative way to define group relations within an organization, or hierarchy -->
+	      <relationships id="{sourcedid}" groupid-ref="{sourcedid}">
+	         <child groupid-ref="{??}" /><!-- child / more specialized group -->
+	         <parent groupid-ref="{??}" /><!-- parent / more generalized group -->
+	         <sibling groupid-ref="{??}" /><!-- sibling / related group of similiar specificity sharing a common parent -->
+	         <alias groupid-ref="{??}" /><!-- alias or also known as, may result in one record replacing the other? -->
+	      </relationships>
+      </payload>
+   </detail>
+
+</batch>
+

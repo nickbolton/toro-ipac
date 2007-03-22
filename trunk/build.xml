@@ -1,0 +1,158 @@
+<project name="ipac" default="compile">
+
+    <property file="build.properties"/>
+
+    <property name="build.version" value="dev" /><!-- Default -->
+
+    <!-- CLASSPATH -->
+    <path id="classpath">
+        <pathelement location="${build.home}" />
+        <fileset dir="lib" />
+    </path>
+
+    <target name="init">
+
+        <!-- Create necessary dirs -->
+        <mkdir dir="${build.home}" />
+        <mkdir dir="${JAVADOC}" />
+
+        <!-- Copy property directory and do replace on tokens -->
+        <!-- added by Stones -->
+        <filter token="REPOSITORY_HOME" value="${REPOSITORY_HOME}"/>
+        <filter token="CANONICAL_XSL_HOME" value="${CANONICAL_XSL_HOME}"/>
+        <filter token="CANONICAL_INPUT" value="${CANONICAL_INPUT}"/>
+        <filter token="CANONICAL_OUTPUT" value="${CANONICAL_OUTPUT}"/>
+        <copy verbose="false" todir="${build.home}/properties" filtering="true">
+            <fileset dir="${PROPERTIES}" />
+        </copy>
+
+        <!-- Touch all source files -->
+<!--
+        <touch>
+            <fileset dir="${SRC}"/>
+        </touch>
+-->
+
+        <!-- Delete any previous war and jar files -->
+        <delete>
+            <fileset dir="." includes="*.jar"/>
+            <fileset dir="." includes="*.war"/>
+        </delete>
+    </target>
+
+    <target name="compile" depends="init">
+
+        <!-- Build compiled source tree in build.home dir -->
+        <javac srcdir="${SRC}" destdir="${build.home}">
+            <classpath refid="classpath" />
+        </javac>
+
+    </target>
+
+    <target name="runwar" depends="compile">
+
+        <tstamp>
+          <format property="NOW_TS" pattern="E MMM dd hh:mm:ss z yyyy" locale="en" />
+        </tstamp>
+
+        <!-- Create Web Application Archive -->
+        <war warfile="${PROJNAME}.war" webxml="web.xml">
+            <fileset dir="${HTML}" />
+            <classes dir="${build.home}"/>
+            <lib dir="${LIBRARIES}" excludes="servlet.jar" />
+            <manifest>
+                <attribute name="Main-Class" value="net.unicon.ipac.IpacGUI" />
+                <attribute name="Created-By" value="UNICON, Inc." />
+                <section name="Academus IPAQ Component">
+                    <attribute name="Implementation-Version" value="${build.version}" />
+                    <attribute name="JDK-Version" value="${java.version}" />
+                    <attribute name="Build-date" value="${NOW_TS}" />
+                </section>
+            </manifest>
+        </war>
+
+    </target>
+
+    <target name="dist" depends="runwar">
+
+        <mkdir dir="dist" />
+
+        <move file="${PROJNAME}.war" todir="dist" />
+
+    </target>
+
+    <target name="javadoc" depends="runwar">
+
+         <!-- Create Javadocs from current source tree -->
+         <javadoc packagenames="*"
+               sourcepath="${SRC}"
+               destdir="${JAVADOC}"
+               author="true" version="true"/>
+
+    </target>
+
+    <target name="package" depends="javadoc">
+
+        <!-- Package current Javadocs and flatten source tree -->
+        <tstamp/>
+               <jar destfile="./JavaDocs-${DSTAMP}.jar"
+                    basedir="${JAVADOC}"/>
+
+    </target>
+
+    <target name="deploy" depends="runwar">
+
+        <!-- Delete previous versions of web application -->
+        <delete dir="${WEBAPPS}\${PROJNAME}"/>
+        <delete dir="${WEBAPPS}\${PROJNAME}.war"/>
+
+        <!-- Deply new web application -->
+        <copy file="${PROJNAME}.war" todir="${WEBAPPS}"/>
+
+    </target>
+
+    <target name="clean">
+
+        <!-- Perform cleanup -->
+        <delete dir="${build.home}" />
+        <delete dir="${JAVADOC}" />
+        <delete dir="${WEBAPPS}/${PROJNAME}" />
+        <delete dir="dist" />
+
+    </target>
+
+    <target name="build_driver" depends="compile">
+
+        <!-- Create a temporary directory -->
+        <mkdir dir="${DRIVER}"  />
+
+        <!-- Creates a manifest file for the driver jar file -->
+        <javac srcdir="./driver" destdir="${DRIVER}">
+            <classpath refid="classpath" />
+        </javac>
+
+        <tstamp>
+          <format property="NOW_TS" pattern="E MMM dd hh:mm:ss z yyyy" locale="en" />
+        </tstamp>
+
+        <!-- Create a Executable Jar file -->
+        <jar destfile="${PROJNAME}_driver.jar">
+            <fileset dir="${DRIVER}" />
+            <fileset dir="${PROPERTIES}" excludes="**/*.xml"/>
+            <manifest>
+                <attribute name="Main-Class" value="net.unicon.ipac.IpacGUI" />
+                <attribute name="Created-By" value="UNICON, Inc." />
+                <section name="Academus IPAQ Component">
+                    <attribute name="Implementation-Version" value="${build.version}" />
+                    <attribute name="JDK-Version" value="${java.version}" />
+                    <attribute name="Build-date" value="${NOW_TS}" />
+                </section>
+            </manifest>
+        </jar>
+
+        <!-- Delete temporary directory -->
+        <delete dir="${DRIVER}" />
+
+    </target>
+
+</project>
