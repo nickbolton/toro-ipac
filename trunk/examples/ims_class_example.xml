@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE batch SYSTEM "ucf.dtd">
+<enterprise>
+   <properties>
+      <datasource>testclient</datasource>
+
+      <target>UNICON</target>
+
+      <type>Testing</type>
+
+      <datetime>2003-09-12</datetime>
+   </properties>
+
+   <group recstatus="2">
+      <sourcedid>
+         <source>testclient</source>
+
+         <id>SuperheroCLASS1</id>
+      </sourcedid>
+
+      <grouptype>
+         <scheme>CLASS</scheme>
+
+         <typevalue level="1">CLASSES</typevalue>
+      </grouptype>
+
+      <grouptype>
+         <scheme>CREDITS</scheme>
+
+         <typevalue level="2">1.00 - 3.00</typevalue>
+      </grouptype>
+
+      <description>
+         <short>SH101-MWF</short>
+
+         <long>Introduction to Superheroing</long>
+
+         <full>This course will teach aspiring men and women how to go about launching a superhero career. It will explain the details of creating an alter-ego (with costume), preserving a secret identity, working with official law enforcement, and following the generally accepted superhero code of ethics.</full>
+      </description>
+
+      <org>
+         <orgname>University of Metropolis</orgname>
+
+         <orgunit>Applied Metaphysics</orgunit>
+      </org>
+
+      <timeframe>
+         <begin restrict="1">2003-09-12</begin>
+
+         <end restrict="1">2003-12-12</end>
+
+         <adminperiod>Fall2003</adminperiod>
+      </timeframe>
+
+      <enrollcontrol>
+         <enrollaccept>0</enrollaccept>
+
+         <enrollallowed>0</enrollallowed>
+      </enrollcontrol>
+
+      <email>sh101@universityofmetropolis.edu</email>
+
+      <url>http://www.universityofmetropolis.edu/appliedmetaphysics/</url>
+
+      <relationship relation="1">
+         <sourcedid>
+            <source>testclient</source>
+
+            <id>SuperheroCOURSE101</id>
+         </sourcedid>
+
+         <label>Introduction to Superheroing Course</label>
+      </relationship>
+
+      <relationship relation="1">
+         <sourcedid>
+            <source>testclient</source>
+
+            <id>VigilanteCOURSE201</id>
+         </sourcedid>
+
+         <label>Vigilantes and MetaHumans Course</label>
+      </relationship>
+   </group>
+</enterprise>
+
+

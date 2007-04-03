@@ -67,6 +67,8 @@ public class IpacGUI extends JFrame implements ActionListener {
     private int windowWidth  = 1100;
     private int windowHeight = 700;
     private int columnWidth  = 40;
+    
+    private File previousXmlFile;
 
     private static final String APP_PATH = "/ipac/ipac";
 
@@ -243,12 +245,15 @@ public class IpacGUI extends JFrame implements ActionListener {
 
             XmlArchiveFileFilter filter = new XmlArchiveFileFilter();
             chooser.setFileFilter(filter);
+            if (previousXmlFile != null) {
+	            chooser.setSelectedFile(previousXmlFile);
+            }
 
             int selected = chooser.showOpenDialog(getContentPane());
 
             if (selected == JFileChooser.APPROVE_OPTION) {
-                File xmlFile = chooser.getSelectedFile();
-                String xmlPath = xmlFile.getAbsolutePath();
+                previousXmlFile = chooser.getSelectedFile();
+                String xmlPath = previousXmlFile.getAbsolutePath();
                 fileText.setText(xmlPath);
                 return;
             } else if (selected == JFileChooser.CANCEL_OPTION) {

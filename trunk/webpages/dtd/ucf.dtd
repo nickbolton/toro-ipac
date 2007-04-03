@@ -36,6 +36,8 @@
 <!ELEMENT demographics ( birthday?, disability? ) >
 <!ATTLIST demographics gender (male | female | unknown) "unknown" >
 
+<!ELEMENT generic-group ( shortname?, title?, description?, relationships? ) >
+
 <!ELEMENT department ( shortname?, title?, description?, relationships? ) >
 
 <!ELEMENT description ( #PCDATA ) >
@@ -58,7 +60,7 @@
 
 <!ELEMENT formatted ( #PCDATA ) >
 
-<!ELEMENT group ( source-info?, (offering | club | department | topic | division) ) >
+<!ELEMENT group ( source-info?, (generic-group | offering | club | department | topic | division) ) >
 <!ATTLIST group id CDATA #IMPLIED >
 
 <!ELEMENT group-role ( #PCDATA ) >

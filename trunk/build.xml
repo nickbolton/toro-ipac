@@ -22,6 +22,7 @@
         <filter token="CANONICAL_XSL_HOME" value="${CANONICAL_XSL_HOME}"/>
         <filter token="CANONICAL_INPUT" value="${CANONICAL_INPUT}"/>
         <filter token="CANONICAL_OUTPUT" value="${CANONICAL_OUTPUT}"/>
+        <filter token="TOMCATHOME" value="${TOMCATHOME}"/>
         <copy verbose="false" todir="${build.home}/properties" filtering="true">
             <fileset dir="${PROPERTIES}" />
         </copy>
@@ -43,7 +44,7 @@
     <target name="compile" depends="init">
 
         <!-- Build compiled source tree in build.home dir -->
-        <javac srcdir="${SRC}" destdir="${build.home}">
+        <javac debug="true" srcdir="${SRC}" destdir="${build.home}">
             <classpath refid="classpath" />
         </javac>
 
@@ -127,7 +128,7 @@
         <mkdir dir="${DRIVER}"  />
 
         <!-- Creates a manifest file for the driver jar file -->
-        <javac srcdir="./driver" destdir="${DRIVER}">
+        <javac debug="true" srcdir="./driver" destdir="${DRIVER}">
             <classpath refid="classpath" />
         </javac>
 

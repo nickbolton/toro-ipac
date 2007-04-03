@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE batch SYSTEM "ucf.dtd">
+<batch>
+   <detail>
+      <action>
+         <add />
+      </action>
+
+      <payload>
+         <member groupid-ref="CLASS6791" personid-ref="CLASS MEMBER1095425">
+            <status>active</status>
+
+            <group-role>Member</group-role>
+         </member>
+      </payload>
+   </detail>
+</batch>
+
+
