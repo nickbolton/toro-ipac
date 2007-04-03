@@ -1,0 +1,49 @@
+<enterprise>
+	<properties>
+		<datasource>testclient</datasource>
+		<target>UNICON</target>
+		<type>Testing</type>
+		<datetime>2003-09-12</datetime>
+	</properties>
+	<!-- recstatus: 1=add, 2=update, 3=delete -->
+	<person recstatus = "1">
+		<comments>Add a new Person record.</comments>
+		<sourcedid>
+			<source>testclient</source>
+			<id>CK1</id>
+		</sourcedid>
+		<name>
+			<fn>Clark Kent</fn>
+			<n>
+				<family>Kent</family>
+				<given>Clark</given>
+				<prefix>Mr.</prefix>
+				<suffix>I</suffix>
+			</n>
+		</name>
+		<demographics>
+			<gender>2</gender>
+			<bday>1958-02-18</bday>
+			<disability>None.</disability>
+		</demographics>
+		<email>superman@justiceleagueofamerica.com</email>
+		<url>http://www.dunelm.com</url>
+		<tel teltype = "Mobile">5555555555</tel>
+		<tel teltype = "1">5555555556</tel>
+		<adr>
+			<pobox>Box 13</pobox>
+			<extadd>The Daily Planet</extadd>
+			<street>123 A St</street>
+			<street>Another St</street>
+			<locality>Metropolis</locality>
+			<region>New York</region>
+			<pcode>11111</pcode>
+			<country>USA</country>
+		</adr>
+		<systemrole systemroletype="User" />
+		<institutionrole primaryrole = "Yes" institutionroletype = "Alumni"/>
+		<institutionrole primaryrole = "No" institutionroletype = "ProspectiveStudent"/>
+	</person>
+
+</enterprise>
+

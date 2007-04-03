@@ -55,7 +55,7 @@ public class IPACServlet extends HttpServlet {
         "net.unicon.academus.api.AcademusApiController";
 
     private ILogService log   = null;
-    private String doctypeURI = null;
+    private String doctype = null;
 
     public void init() throws ServletException {
         try {
@@ -63,11 +63,10 @@ public class IPACServlet extends HttpServlet {
             log = LogServiceFactory.instance();
 
             // Get doctype URI for validation.
-            doctypeURI =
+            doctype =
                 UniconPropertiesFactory.getManager(
                     CommonPropertiesType.SERVICE).getProperty(
-                    "net.unicon.sdk.transformation.ITransformInput.defaultInputType");
-                    //    "net.unicon.ipac.validation.doctypeURI");
+                        "net.unicon.ipac.validation.doctype");
 
         } catch (Throwable t) {
             throw new ServletException(t);
@@ -173,9 +172,7 @@ public class IPACServlet extends HttpServlet {
 
         StringBuffer doctypeDecl = new StringBuffer("");
         doctypeDecl.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
-        doctypeDecl.append("<!DOCTYPE enterprise SYSTEM ");
-        doctypeDecl.append("\"").append(doctypeURI).append("\"");
-        doctypeDecl.append(">\n");
+        doctypeDecl.append(doctype).append('\n');
 
         String regex = "<\\?xml *version *= *\"1.0\" *[^?]*\\?>";
         xml = xml.replaceFirst(regex, doctypeDecl.toString());

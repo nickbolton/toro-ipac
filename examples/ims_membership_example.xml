@@ -1,0 +1,34 @@
+<enterprise>
+   <properties>
+      <datasource>testclient</datasource>
+
+      <target>UNICON</target>
+
+      <type>Testing</type>
+
+      <datetime>2003-09-12</datetime>
+   </properties>
+
+   <membership>
+      <sourcedid>
+         <source>testclient</source>
+
+         <id>SuperheroCLASS1</id>
+      </sourcedid>
+
+      <member>
+		<sourcedid>
+			<source>testclient</source>
+			<id>CK1</id>
+		</sourcedid>
+
+         <idtype>1</idtype>
+
+         <role roletype="01" recstatus="1">
+            <status>1</status>
+         </role>
+      </member>
+   </membership>
+</enterprise>
+
+

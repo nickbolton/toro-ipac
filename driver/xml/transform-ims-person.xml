@@ -8,7 +8,7 @@
 <!--Example:  Multiple <person> example for the IMS Enterprise Specification Advanced Technolgies Workshop    -->
 <enterprise>
     <properties>
-        <datasource>Dunelm Services Limited</datasource>
+        <datasource>testclient</datasource>
         <target>Telecommunications LMS</target>
         <type>DATABASE UPDATE</type>
         <datetime>2001-08-08</datetime>
@@ -16,7 +16,7 @@
     <person recstatus = "1">
         <comments>Add a new Person record.</comments>
         <sourcedid>
-            <source>Dunelm Services Limited</source>
+            <source>testclient</source>
             <id>CK1</id>
         </sourcedid>
         <name>
@@ -36,7 +36,7 @@
     <person recstatus = "2">
         <comments>Update a previously created record.</comments>
         <sourcedid>
-            <source>Dunelm Services Limited</source>
+            <source>testclient</source>
             <id>CS1</id>
         </sourcedid>
         <name>
@@ -62,7 +62,7 @@
         <url>http://www.dunelm.com</url>
         <tel teltype = "Mobile">4477932335019</tel>
         <adr>
-            <extadd>Dunelm Services Limited</extadd>
+            <extadd>testclient</extadd>
             <street>34 Acorn Drive</street>
             <street>Stannington</street>
             <locality> Sheffield</locality>
@@ -79,7 +79,7 @@
     <person recstatus = "3">
         <comments>Delete this record.</comments>
         <sourcedid>
-            <source>Dunelm Services Limited</source>
+            <source>testclient</source>
             <id>LL1</id>
         </sourcedid>
         <name>

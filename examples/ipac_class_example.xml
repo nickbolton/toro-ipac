@@ -1,0 +1,55 @@
+<batch>
+   <detail>
+      <action>
+         <update />
+      </action>
+
+      <payload>
+         <group id="testclientSuperheroCLASS1">
+            <source-info>
+               <source>testclient</source>
+
+               <id>SuperheroCLASS1</id>
+            </source-info>
+
+            <offering>
+               <shortname>SH101-MWF</shortname>
+
+               <title>Introduction to Superheroing</title>
+
+               <description>This course will teach aspiring men and women how to go about launching a superhero career. It will explain the details of creating an alter-ego (with costume), preserving a secret identity, working with official law enforcement, and following the generally accepted superhero code of ethics.</description>
+
+               <timeframe>
+                  <start>
+                     <date>2003-09-12</date>
+                  </start>
+
+                  <end>
+                     <date>2003-12-12</date>
+                  </end>
+
+                  <term>Fall2003</term>
+               </timeframe>
+
+               <email>sh101@universityofmetropolis.edu</email>
+
+               <url>http://www.universityofmetropolis.edu/appliedmetaphysics/</url>
+
+               <relationships>
+                  <parent groupid-ref="testclientSuperheroCOURSE101">Introduction to Superheroing Course</parent>
+
+                  <parent groupid-ref="testclientVigilanteCOURSE201">Vigilantes and MetaHumans Course</parent>
+               </relationships>
+
+               <enrollment>
+                  <model>sis</model>
+
+                  <default-role>member</default-role>
+               </enrollment>
+            </offering>
+         </group>
+      </payload>
+   </detail>
+</batch>
+
+
