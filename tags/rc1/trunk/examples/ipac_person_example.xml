@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch>
+   <detail>
+      <action>
+         <import />
+      </action>
+
+      <payload>
+         <person id="testclientclarkkent" username="clarkkent">
+            <source-info>
+               <source>testclient</source>
+
+               <id>clarkkent</id>
+            </source-info>
+
+            <name>
+               <formatted>Clark Kent</formatted>
+
+               <last>Kent</last>
+
+               <first>Clark</first>
+
+               <prefix>Mr.</prefix>
+
+               <suffix>I</suffix>
+            </name>
+
+            <demographics gender="male">
+               <birthday>1958-02-18</birthday>
+
+               <disability>None.</disability>
+            </demographics>
+
+            <contact-info>
+               <email>superman@justiceleagueofamerica.com</email>
+
+               <url>http://www.dunelm.com</url>
+
+               <phone type="mobile">5555555555</phone>
+
+               <phone type="main">5555555556</phone>
+
+               <address>
+                  <line1>Box 13, 123 A St, Another St</line1>
+
+                  <line2>The Daily Planet</line2>
+
+                  <city>Metropolis</city>
+
+                  <state>New York</state>
+
+                  <zip>11111</zip>
+
+                  <country>USA</country>
+               </address>
+            </contact-info>
+         </person>
+      </payload>
+   </detail>
+</batch>
+
+

@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<transformations>
+    <!--transformation input-uri="@CANONICAL_INPUT@" output-uri="@CANONICAL_OUTPUT@" xsl="@CANONICAL_XSL_HOME@/ims-unicon.xsl" /-->
+    <transformation input-uri="@CANONICAL_INPUT@" output-uri="@CANONICAL_OUTPUT@" xsl="@CANONICAL_XSL_HOME@/ucf.xsl" />
+</transformations>

@@ -1,0 +1,12 @@
+Portions of this software distribution require certain copyright 
+or other notices to be included with the distribution.
+These notice may also appear in individual source files.
+
+<<include any required notices from 3rd party code or libraries
+  below are some examples>>
+
+This product includes software developed by
+the Apache Software Foundation (http://www.apache.org/).
+
+This product includes software developed by
+the Spring Framework Project (http://www.springframework.org).

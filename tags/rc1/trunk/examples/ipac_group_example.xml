@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch>
+   <detail>
+      <action>
+         <add />
+      </action>
+
+      <payload>
+         <group id="testclientSuperhero">
+            <source-info>
+               <source>testclient</source>
+
+               <id>Superhero</id>
+            </source-info>
+
+            <generic-group>
+               <shortname>Superhero</shortname>
+
+               <title>Introduction to Superheroing</title>
+
+               <description>This course will teach aspiring men and women how to go about launching a superhero career. It will explain the details of creating an alter-ego (with costume), preserving a secret identity, working with official law enforcement, and following the generally accepted superhero code of ethics.</description>
+
+            </generic-group>
+         </group>
+      </payload>
+   </detail>
+</batch>
+
+
