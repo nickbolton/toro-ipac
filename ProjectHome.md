@@ -1,0 +1,1 @@
+Toro is a set of technologies built by Unicon, Inc. as part of Academus Portal. This project contains a utility for importing Groups and Permissions data from external data sources.  It currently includes a transform for data in IMS Enterprise format, but can be easily extended to support other formats.
